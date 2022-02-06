@@ -6,4 +6,5 @@ package pl.edu.agh.hangman;
  * - sprawdzanie czy dana litera jest w wylosowanym słowie
  */
 public class WordProcessor {
+
 }
