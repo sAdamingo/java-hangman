@@ -5,31 +5,37 @@ package pl.edu.agh.hangman;
  */
 
 public class WordPrinter {
-    private static int trialNumber = 0;
+    private int trialNumber = 0;
+    private final WordProcessor wordProcessor;
 
+    public WordPrinter (WordProcessor wordProcessor) {
+        this.wordProcessor = wordProcessor;
+    }
 
-    public static String printUserFriendlyFormat(Boolean userInput){
-        WordProcessor wordProcessor = new WordProcessor();
-
+    public String printUserFriendlyFormat(Boolean userInput){
+            wordProcessor.getWordCurrentState();
             if(!userInput){
                 trialNumber++;
             }
-            if(trialNumber == HANGMANPICS.length){
+            if(trialNumber == HANGMANPICS.length - 1){
                 return "Game Over";
             }
-//            else if(!wordProcessor.getWordCurrentState().contains("_")){
-//                return "You have won!";
-//            }
+            else if(!wordProcessor.getWordCurrentState().contains("_")){
+                return "You have won!";
+            }
             else{
                 return "";
             }
         }
 
 
-    public static void printHangman(){
-        System.out.println(HANGMANPICS[trialNumber]);
+    public void printHangman(){
+        System.out.println(HANGMANPICS[getTrialNumber()]);
     }
 
+    public int getTrialNumber() {
+        return trialNumber;
+    }
 
     public static final String[] HANGMANPICS = new String[]{
             "  +---+\n" +

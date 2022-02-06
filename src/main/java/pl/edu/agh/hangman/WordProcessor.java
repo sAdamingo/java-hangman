@@ -39,7 +39,7 @@ public class WordProcessor {
     }
 
     public boolean updateWithUserInput(char userInput){
-        if (wordToFind.contains(Character.toString(userInput))){
+        if (wordToFind.contains(Character.toString(userInput)) || wordCurrentState.contains(Character.toString(userInput))){
             char[] result = this.wordCurrentState.toCharArray();
             for (int i = 0; i < wordCurrentState.length(); i++) {
                 if (userInput == wordToFind.toCharArray()[i]) {
